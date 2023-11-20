@@ -11,8 +11,19 @@ int** read_board_from_file(char* filename){
     int** board = NULL;
 
     // replace this comment with your code
+    fp = fopen(filename, "r");
+    
+    int** sudoku_board = (int**)malloc(sizeof(int*)*ROW_SIZE);
+    
+    for(int row = 0; row < ROW_SIZE; row++){
+        sudoku_board[row] = (int*)malloc(sizeof(int)*COL_SIZE);
+    }
 
-    return board;
+    for (int i = 0; i<ROW_SIZE*COL_SIZE;i++){
+        fscanf(fp, "%d," , &sudoku_board[i/9][i%9]);
+    }
+
+    return sudoku_board;
 }
 
 
